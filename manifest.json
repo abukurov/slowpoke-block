@@ -1,0 +1,51 @@
+{
+  "name": "Slowpoke Block",
+  "version": "0.0.1",
+  "icons": {
+    "16": "images/icon_16.png",
+    "48": "images/icon_48.png",
+    "64": "images/icon_64.png",
+    "128": "images/icon_128.png"
+  },
+  "manifest_version": 2,
+  "description": "Позволяет скрывать сообщения от надоедливых слоупоков.",
+
+  "permissions": [
+    "tabs",
+    "storage",
+    "webNavigation",
+    "*://*.vk.com/*"
+  ],
+
+  "background": {
+    "scripts": ["constants.js", "background.js"]
+  },
+
+  "browser_action": {
+    "default_icon": "images/icon_48.png",
+    "default_popup": "options.html"
+  },
+
+  "content_scripts": [{
+    "matches": [
+      "*://*.vk.com/*"
+    ],
+    "js": [
+      "constants.js",
+      "observer.js",
+      "content.js"
+    ],
+    "css": ["styles/messages.css"],
+    "run_at": "document_end"
+  }],
+
+  "web_accessible_resources": [
+    "images/*.png",
+    "style/*.css"
+  ],
+  "externally_connectable": {
+    "matches": [
+      "*://*.vk.com/*"
+    ]
+  }
+}
