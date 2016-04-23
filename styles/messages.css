@@ -1,0 +1,19 @@
+.fake-message {
+  background-color: #CFD8DC;
+}
+
+.fake-message__text,
+.fake-message__image-wrapper {
+  vertical-align: middle !important;
+}
+
+.fake-message__text {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.fake-message__image {
+  width: 32px;
+  height: 32px;
+}

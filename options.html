@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>My Test Extension Options</title>
+  <link rel="stylesheet" href="styles/options.css" integrity="">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium">
+</head>
+<body>
+
+<div class="popup">
+  <div class="popup__header">
+    <img src="images/background.jpg"/>
+    <h3 class="popup__header-title">Slowpoke Block</h3>
+  </div>
+  <div class="popup__body">
+    <div class="textfield">
+      <textarea class="textfield__input" id="user-ids"></textarea>
+      <label class="textfield__label" for="user-ids">Идентификаторы пользователей</label>
+    </div>
+
+    <label class="checkbox" for="new-version">
+      <input type="checkbox" id="new-version" class="checkbox__input">
+      <span class="checkbox__box-outline">
+        <span class="checkbox__tick-outline"></span>
+      </span>
+      <span class="checkbox__label">Новая версия VK.com</span>
+    </label>
+  </div>
+  <div class="popup__footer">
+    <button id="save" class="button">Сохранить</button>
+  </div>
+</div>
+
+<script src="options.js"></script>
+</body>
+</html>
