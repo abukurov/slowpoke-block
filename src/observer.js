@@ -1,4 +1,8 @@
-import { createMutationObserver } from './mutation-observer';
+const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+
+function createMutationObserver(handler) {
+  return new MutationObserver(handler);
+}
 
 export default class PageObserver {
 
