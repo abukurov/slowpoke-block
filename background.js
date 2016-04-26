@@ -12,7 +12,7 @@
   chrome.browserAction.setBadgeBackgroundColor({ color: '#880E4F'});
 
   chrome.storage.sync.get({
-    userIds: [window.SLOWPOKE_ID]
+    userIds: []
   }, function (settings) {
     chrome.browserAction.setBadgeText({
       text: settings.userIds.length.toString()

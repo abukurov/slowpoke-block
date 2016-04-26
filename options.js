@@ -9,7 +9,6 @@
     var userIds = (identificatorsInput.value || '')
       .replace(/\s+/g, '')
       .split(/\n|,/)
-      .concat(chrome.extension.getBackgroundPage().SLOWPOKE_ID)
       .filter(function (value, index, self) {
         return value && self.indexOf(value) === index;
       });

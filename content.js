@@ -37,7 +37,7 @@
   }
 
   chrome.storage.sync.get({
-    userIds: [window.SLOWPOKE_ID],
+    userIds: [],
     isNewVersion: false
   }, function (settings) {
     var pageObserver = new PageObserver(
