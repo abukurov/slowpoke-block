@@ -1,4 +1,6 @@
 .project
 .idea/
 dist
+tmp
 node_modules
+*.log
