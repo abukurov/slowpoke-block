@@ -31,8 +31,6 @@
       "*://*.vk.com/*"
     ],
     "js": [
-      "constants.js",
-      "observer.js",
       "content.js"
     ],
     "css": ["styles/messages.css"],
