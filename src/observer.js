@@ -37,10 +37,6 @@ export default class PageObserver {
 
     this.transformMessages(document);
 
-    const selector = this._userIds.map(userId => `[data-${this._property}="${userId}"]`).join(',');
-
-    Array.from(document.querySelectorAll(selector)).forEach(this._transform);
-
     this._observer = createMutationObserver(mutations => {
       mutations.forEach(mutation => {
         Array.from(mutation.addedNodes).forEach(element => {
