@@ -10,18 +10,30 @@ export default class PageObserver {
     this.updateObserver(document.URL);
   }
 
+  selectMessageNodes(container) {
+    let selector = this.getMessageSelector();
+
+    if (!container.querySelectorAll) {
+      return [];
+    }
+
+    return Array.from(container.querySelectorAll(selector));
+  }
+
   getMessageSelector() {
     return this._userIds
       .map(userId => `[data-${this._property}="${userId}"]`)
       .join(',');
   }
 
-  transformMessages(container) {
-    const selector = this.getMessageSelector();
-    const messages = container && container.querySelectorAll ?
-      container.querySelectorAll(selector) : [];
+  doTransform(element) {
+    const userId = element.dataset && element.dataset[this._property];
 
-    Array.from(messages).forEach(this._transform);
+    if (userId && this._userIds.indexOf(userId) !== -1) {
+      return this._transform(element);
+    }
+
+    this.selectMessageNodes(element).forEach(this._transform);
   }
 
   updateObserver(url) {
@@ -31,18 +43,9 @@ export default class PageObserver {
       return;
     }
 
-    this.transformMessages(document);
+    this.doTransform(document);
 
-    this._observer = createAddedNodesMutationObserver(element => {
-      const userId = element.dataset && element.dataset[this._property];
-
-      if (userId && this._userIds.indexOf(userId) !== -1) {
-        return this._transform(element);
-      }
-
-      this.transformMessages(element);
-    });
-
+    this._observer = createAddedNodesMutationObserver(element => this.doTransform(element));
     this._observer.observe(document.body, {
       childList: true,
       subtree: true
