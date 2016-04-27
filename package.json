@@ -7,7 +7,7 @@
     "url": "git+https://github.com/abukurov/slowpoke-block.git"
   },
   "scripts": {
-    "start": "npm run clean && npm run copy:assets && npm run build:watch",
+    "start": "npm run clean && npm run copy:assets:dev && npm run build:watch",
     "clean": "rimraf ./dist ./tmp",
     "copy:assets:dev": "mkdir -p tmp && cp -r manifest.json ./assets/* ./tmp",
     "copy:assets": "mkdir -p dist && cp -r manifest.json ./assets/* ./dist",
