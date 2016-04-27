@@ -1,8 +1,4 @@
-const MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
-
-function createMutationObserver(handler) {
-  return new MutationObserver(handler);
-}
+import { createAddedNodesMutationObserver } from './added-nodes-observer';
 
 export default class PageObserver {
 
@@ -37,18 +33,14 @@ export default class PageObserver {
 
     this.transformMessages(document);
 
-    this._observer = createMutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        Array.from(mutation.addedNodes).forEach(element => {
-          const userId = element.dataset && element.dataset[this._property];
+    this._observer = createAddedNodesMutationObserver(element => {
+      const userId = element.dataset && element.dataset[this._property];
 
-          if (userId && this._userIds.indexOf(userId) !== -1) {
-            return this._transform(element);
-          }
+      if (userId && this._userIds.indexOf(userId) !== -1) {
+        return this._transform(element);
+      }
 
-          this.transformMessages(element);
-        });
-      });
+      this.transformMessages(element);
     });
 
     this._observer.observe(document.body, {
